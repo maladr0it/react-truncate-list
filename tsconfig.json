@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "jsx": "react",
+    "noEmit": true,
+    "module": "CommonJS",
+    "strict": true
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,5 @@
+node_modules
+package/prod.js
+package/dev.js
+
+.DS_Store
