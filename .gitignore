@@ -1,5 +1,4 @@
 node_modules
-package/prod.js
-package/dev.js
+build
 
 .DS_Store

@@ -4,8 +4,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 
 const NODE_ENV = process.env.NODE_ENV || "development";
-const outputPath =
-  NODE_ENV === "production" ? "package/prod.js" : "package/dev.js";
+const outputPath = NODE_ENV === "production" ? "build/prod.js" : "build/dev.js";
 
 export default {
   input: "src/index.tsx",
@@ -17,7 +16,7 @@ export default {
   plugins: [
     replace({ "process.env.NODE_ENV": JSON.stringify(NODE_ENV) }),
     babel({ exclude: "node_modules/**", extensions: [".js", ".ts", ".tsx"] }),
-    resolve(),
+    resolve({ extensions: [".js", ".ts", ".tsx"] }),
     commonjs({ include: "node_modules/**" }),
   ],
 };
