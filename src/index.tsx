@@ -78,23 +78,25 @@ const TruncatedList: React.FC<Props> = ({
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    // Copy to a variable so the ref in the cleanup effect targets the correct node
+    const containerEl = containerRef.current;
+
+    if (containerEl) {
+      resizeObserver.observe(containerEl);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (containerEl) {
+        resizeObserver.unobserve(containerEl);
       }
     };
-  }, [children, className, style]);
+  }, [children, alwaysShowTruncator, className, style]);
 
   const childArray = React.Children.toArray(children);
   const items = childArray.map((item, i) => (
     <React.Fragment key={`${item}${i}`}>
       <li>{item}</li>
       <li hidden>
-        {/* <li style={{ display: "none" }}> */}
         {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
       </li>
     </React.Fragment>
