@@ -2,7 +2,8 @@
   "name": "react-truncate-list",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "types": "build/index.d.ts.",
   "scripts": {
     "storybook": "start-storybook",
     "build:prod": "NODE_ENV=production rollup -c",
