@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./src",
+    "baseUrl": "src",
     "jsx": "react",
-    "noEmit": true,
-    "module": "CommonJS",
-    "strict": true
+    "allowJs": true,
+    "module": "es6",
+    "strict": true,
+    "declaration": true
   },
-  "rootDirs": ["src", "stories"]
+  "include": ["src"],
+  "exclude": ["**/stories/*"]
 }

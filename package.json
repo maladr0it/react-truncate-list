@@ -14,20 +14,28 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "@babel/preset-typescript": "^7.8.3",
+    "@material-ui/core": "^4.9.2",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-replace": "^2.3.1",
     "@storybook/react": "^5.3.13",
     "@types/react": "^16.9.19",
     "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.1.1",
     "react": "^16.12.0",
     "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-postcss": "^2.0.6",
+    "rollup-plugin-typescript2": "^0.26.0",
     "typescript": "^3.7.5"
   },
+  "files": [
+    "README.md",
+    "index.js",
+    "build/"
+  ],
   "peerDependencies": {
-    "react": ">=16.x.x"
+    "react": ">=16.x.x",
+    "resize-observer-polyfill": ">=1.x.x"
   }
 }
