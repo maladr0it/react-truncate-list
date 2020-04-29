@@ -42,7 +42,7 @@ const TruncatedList: React.FC<Props> = ({
         node.hidden = true;
       }
 
-      let i; // Declare outside the loop so we can check it afterward
+      let i: number; // Declare outside the loop so we can check it afterward
       for (i = 0; i < childNodes.length; i += 2) {
         const itemEl = childNodes[i];
         const truncatorEl = childNodes[i + 1];
@@ -95,7 +95,10 @@ const TruncatedList: React.FC<Props> = ({
   }, [children, alwaysShowTruncator, className, style]);
 
   const childArray = React.Children.toArray(children);
-  const truncatorClassName = itemClassName ? `${itemClassName} ${itemClassName}--truncator` : "";
+  const truncatorClassName = itemClassName
+    ? `${itemClassName} ${itemClassName}--truncator`
+    : "";
+
   const items = childArray.map((item, i) => (
     <React.Fragment key={`${item}${i}`}>
       <li className={itemClassName}>{item}</li>
