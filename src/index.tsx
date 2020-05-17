@@ -12,6 +12,7 @@ type RenderTruncator = ({
 
 interface Props {
   renderTruncator: RenderTruncator;
+  children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
   className?: string;
   itemClassName?: string;
