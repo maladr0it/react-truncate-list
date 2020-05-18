@@ -1,6 +1,9 @@
 # react-truncate-list
 
-Truncate a list of elements with a symbol or component of your choice. SSR friendly.
+Truncate a list of elements with a symbol or component of your choice.
+
+- < 1kb bundle size
+- SSR friendly
 
 ## Demo
 
@@ -46,7 +49,7 @@ import TruncatedList from "react-truncate-list";
 
 This library simply provides an unstyled `<ul>` that will render a component of your choice after the last item that fits within it before overflowing. It is up to you to provide a `max-height` or some other constraint on its dimensions so that it will experience overflow behaviour.
 
-Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will be empower you to customise the list to look and behave exactly as you need.
+Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will empower you to customise the list to look and behave exactly as you need.
 
 ## API
 
@@ -81,7 +84,7 @@ renderTruncator={({ hiddenItemsCount }) => (
 
 ### `children` (optional)
 
-Pass the list items as children. Each child be wrapped in an `<li>`.
+Pass the list items as children. Each child will be automatically wrapped in an `<li>`.
 
 ### `alwaysShowTruncator` (optional)
 
