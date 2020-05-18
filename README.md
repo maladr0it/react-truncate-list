@@ -1,6 +1,6 @@
 # react-truncate-list
 
-Truncate a list of elements with a symbol or component of your choice
+Truncate a list of elements with a symbol or component of your choice. SSR friendly.
 
 ## Demo
 
@@ -79,10 +79,18 @@ renderTruncator={({ hiddenItemsCount }) => (
 )}
 ```
 
-### `children`
+### `children` (optional)
 
 Pass the list items as children. Each child be wrapped in an `<li>`.
 
 ### `alwaysShowTruncator` (optional)
 
 Always show the 'truncator', even when all items are visible. Useful for advanced use-cases such as an expanding list.
+
+### `itemClassName` (optional)
+
+Class name to apply to the generated `<li>` tags wrapping each child of the list. Typically you will not need this and will instead apply a class name directly to the children.
+
+## SSR
+
+Before hydration, the list will have `overflow: auto` applied to it so that it is scrollable. Once hydrated in the client, a layout effect will fire, shortening the list and inserting the 'truncator'.
