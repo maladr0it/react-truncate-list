@@ -2,6 +2,7 @@
 
 Truncate a list of elements with a symbol or component of your choice.
 
+- no opinionated styles - fully customizable
 - < 1kb bundle size
 - SSR friendly
 
