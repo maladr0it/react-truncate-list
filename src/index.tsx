@@ -19,14 +19,14 @@ interface Props {
   style?: React.CSSProperties;
 }
 
-const TruncatedList: React.FC<Props> = ({
+const TruncatedList = ({
   renderTruncator,
   alwaysShowTruncator,
   children,
   className,
   itemClassName,
   style,
-}) => {
+}: Props) => {
   const containerRef = useRef<HTMLUListElement>(null);
 
   useLayoutEffect(() => {
