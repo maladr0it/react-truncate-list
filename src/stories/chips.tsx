@@ -15,9 +15,9 @@ const useStyles = makeStyles({
     height: "5.25rem",
     resize: "both",
     border: "1px solid black",
-  },
-  item: {
-    margin: "0.25rem",
+    "& > *": {
+      margin: "0.25rem",
+    },
   },
 });
 
@@ -27,7 +27,6 @@ export const chips = () => {
   return (
     <TruncatedList
       className={classes.root}
-      itemClassName={classes.item}
       renderTruncator={({ hiddenItemsCount }) => (
         <Chip label={`+${hiddenItemsCount}`} />
       )}

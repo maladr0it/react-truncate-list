@@ -16,6 +16,7 @@ interface Props {
   alwaysShowTruncator?: boolean;
   className?: string;
   itemClassName?: string;
+  truncatorClassName?: string;
   style?: React.CSSProperties;
 }
 
@@ -25,6 +26,7 @@ const TruncatedList = ({
   children,
   className,
   itemClassName,
+  truncatorClassName,
   style,
 }: Props) => {
   const containerRef = useRef<HTMLUListElement>(null);
@@ -41,6 +43,10 @@ const TruncatedList = ({
 
       for (let node of childNodes) {
         node.hidden = true;
+      }
+
+      if (childNodes.length === 0) {
+        return;
       }
 
       let i: number; // Declare outside the loop so we can check it afterward
@@ -96,16 +102,15 @@ const TruncatedList = ({
   }, [children, alwaysShowTruncator, className, style]);
 
   const childArray = React.Children.toArray(children);
-  const truncatorClassName = itemClassName
-    ? `${itemClassName} ${itemClassName}--truncator`
-    : "";
 
   const items = childArray.map((item, i) => (
     <React.Fragment key={`${item}${i}`}>
       <li className={itemClassName}>{item}</li>
-      <li className={truncatorClassName} hidden>
-        {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
-      </li>
+      {(i < childArray.length - 1 || alwaysShowTruncator) && (
+        <li className={truncatorClassName} hidden>
+          {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
+        </li>
+      )}
     </React.Fragment>
   ));
 
