@@ -106,11 +106,9 @@ const TruncatedList = ({
   const items = childArray.map((item, i) => (
     <React.Fragment key={`${item}${i}`}>
       <li className={itemClassName}>{item}</li>
-      {(i < childArray.length - 1 || alwaysShowTruncator) && (
-        <li className={truncatorClassName} hidden>
-          {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
-        </li>
-      )}
+      <li className={truncatorClassName} hidden>
+        {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
+      </li>
     </React.Fragment>
   ));
 
