@@ -3,3 +3,6 @@ build
 
 .DS_Store
 .now
+
+// 'npm pack' files
+*.tgz

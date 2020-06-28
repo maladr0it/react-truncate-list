@@ -2,7 +2,18 @@ import React, { useRef, useLayoutEffect } from "react";
 // @ts-ignore
 import ResizeObserver from "resize-observer-polyfill";
 
-import "./styles.css";
+const baseCss = `
+.TruncatedList {
+  box-sizing: border-box;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+  overflow: auto;
+}
+.TruncatedList * {
+  box-sizing: inherit;
+}
+`;
 
 type RenderTruncator = ({
   hiddenItemsCount,
@@ -16,6 +27,7 @@ interface Props {
   alwaysShowTruncator?: boolean;
   className?: string;
   itemClassName?: string;
+  nonce?: string;
   truncatorClassName?: string;
   style?: React.CSSProperties;
 }
@@ -26,6 +38,7 @@ const TruncatedList = ({
   children,
   className,
   itemClassName,
+  nonce,
   truncatorClassName,
   style,
 }: Props) => {
@@ -113,13 +126,16 @@ const TruncatedList = ({
   ));
 
   return (
-    <ul
-      ref={containerRef}
-      className={`TruncatedList ${className || ""}`}
-      style={style}
-    >
-      {items}
-    </ul>
+    <React.Fragment>
+      <style nonce={nonce}>{baseCss}</style>
+      <ul
+        ref={containerRef}
+        className={`TruncatedList ${className || ""}`}
+        style={style}
+      >
+        {items}
+      </ul>
+    </React.Fragment>
   );
 };
 

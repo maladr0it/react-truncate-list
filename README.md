@@ -69,6 +69,7 @@ interface Props {
   alwaysShowTruncator?: boolean;
   className?: string;
   itemClassName?: string;
+  nonce?: string;
   style?: React.CSSProperties;
 }
 ```
@@ -94,6 +95,15 @@ Always show the 'truncator', even when all items are visible. Useful for advance
 ### `itemClassName` (optional)
 
 Class name to apply to the generated `<li>` tags wrapping each child of the list. Typically you will not need this and will instead apply a class name directly to the children.
+
+### `nonce` (optional)
+
+If your app's server has a strict
+[Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+that does not allow for untrusted style injection, you can provide a
+[nonce](https://content-security-policy.com/examples/allow-inline-style/) that
+should be sent with the app's main HTML file (usually within a `<meta>` tag).
+Otherwise, you may get `Refused to apply inline style because it violates the following Content Security Policy directive: "style-src 'self'"`.
 
 ## SSR
 

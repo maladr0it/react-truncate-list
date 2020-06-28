@@ -1,6 +1,6 @@
 {
   "name": "react-truncate-list",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Truncate a list of elements with a symbol or component of your choice",
   "repository": "https://github.com/maladr0it/react-truncate-list",
   "main": "build/index.js",
@@ -31,7 +31,6 @@
     "babel-preset-react-app": "^9.1.1",
     "rollup": "^1.31.0",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-postcss": "^2.0.6",
     "rollup-plugin-typescript2": "^0.26.0",
     "typescript": "^3.8.3"
   },
