@@ -40,10 +40,11 @@ npm i resize-observer-polyfill
 yarn add resize-observer-polyfill
 ```
 
-3. Import the package and use it 🚀
+3. Import the package and its required CSS and use it 🚀
 
 ```js
 import TruncatedList from "react-truncate-list";
+import "react-trucate-list/styles.css";
 ```
 
 ## How to use

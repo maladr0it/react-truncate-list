@@ -115,7 +115,7 @@ const TruncatedList = ({
   return (
     <ul
       ref={containerRef}
-      className={`TruncatedList ${className || ""}`}
+      className={`react-truncate-list ${className || ""}`}
       style={style}
     >
       {items}
