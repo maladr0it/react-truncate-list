@@ -1,10 +1,13 @@
 {
   "name": "react-truncate-list",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Truncate a list of elements with a symbol or component of your choice",
   "repository": "https://github.com/maladr0it/react-truncate-list",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "exports": {
+    "./styles.css": "./build/styles.css"
+  },
   "scripts": {
     "storybook": "start-storybook",
     "build:prod": "NODE_ENV=production rollup -c",
@@ -37,7 +40,6 @@
   },
   "files": [
     "README.md",
-    "index.js",
     "build/"
   ],
   "peerDependencies": {
