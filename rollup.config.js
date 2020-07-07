@@ -12,7 +12,7 @@ const NODE_ENV = process.env.NODE_ENV || "development";
 export default {
   input: "src/index.tsx",
   output: {
-    file: "./build/index.js",
+    file: "./dist/index.js",
     format: "cjs",
   },
   external: ["react", "react-dom", "resize-observer-polyfill"],
@@ -20,7 +20,7 @@ export default {
     resolve(),
     commonjs({ include: "node_modules/**" }),
     typescript(),
-    postcss({ extract: path.resolve("build/styles.css") }),
+    postcss({ extract: path.resolve("dist/styles.css") }),
     babel({ exclude: "node_modules/**", extensions: [".js"] }),
     replace({ "process.env.NODE_ENV": JSON.stringify(NODE_ENV) }),
   ],
