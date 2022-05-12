@@ -10,7 +10,7 @@ type RenderTruncator = ({
   hiddenItemsCount: number;
 }) => React.ReactNode;
 
-interface Props {
+export interface TruncatedListProps {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
@@ -28,7 +28,7 @@ const TruncatedList = ({
   itemClassName,
   truncatorClassName,
   style,
-}: Props) => {
+}: TruncatedListProps) => {
   const containerRef = useRef<HTMLUListElement>(null);
 
   useLayoutEffect(() => {
