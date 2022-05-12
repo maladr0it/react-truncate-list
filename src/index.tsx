@@ -14,6 +14,7 @@ interface Props {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
+  alwaysShowFirst?: boolean;
   className?: string;
   itemClassName?: string;
   truncatorClassName?: string;
@@ -23,6 +24,7 @@ interface Props {
 const TruncatedList = ({
   renderTruncator,
   alwaysShowTruncator,
+  alwaysShowFirst,
   children,
   className,
   itemClassName,
@@ -59,6 +61,10 @@ const TruncatedList = ({
         const truncatorRect = truncatorEl.getBoundingClientRect();
         const containerRect = containerRef.current.getBoundingClientRect();
         truncatorEl.hidden = true;
+
+        if (i <= 1 && alwaysShowFirst) {
+          continue;
+        }
 
         // If truncator is outside of the container
         if (
