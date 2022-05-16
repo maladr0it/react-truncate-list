@@ -1,6 +1,4 @@
 import React, { useRef, useLayoutEffect } from "react";
-// @ts-ignore
-import ResizeObserver from "resize-observer-polyfill";
 
 import "./styles.css";
 
@@ -103,14 +101,16 @@ const TruncatedList = ({
 
   const childArray = React.Children.toArray(children);
 
-  const items = childArray.map((item, i) => (
-    <React.Fragment key={`${item}${i}`}>
-      <li className={itemClassName}>{item}</li>
-      <li className={truncatorClassName} hidden>
-        {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
-      </li>
-    </React.Fragment>
-  ));
+  const items = childArray.map((item, i) => {
+    return (
+      <React.Fragment key={i}>
+        <li className={itemClassName}>{item}</li>
+        <li className={truncatorClassName} hidden>
+          {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
+        </li>
+      </React.Fragment>
+    );
+  });
 
   return (
     <ul

@@ -1,0 +1,84 @@
+* {
+  box-sizing: inherit;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.demo {
+  background-color: #f0f0f0;
+  padding: 16px;
+}
+
+.card {
+  padding: 8px;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+.card.mobile {
+  max-width: 350px;
+}
+
+.card.desktop {
+  width: fit-content;
+}
+
+.card h3 {
+  margin: 8px 4px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 74px;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.list > * {
+  margin: 4px;
+}
+
+.list.resizable {
+  width: 300px;
+  resize: both;
+  background-color: #fff;
+  height: 74px;
+  max-height: none;
+}
+
+.list.expandable {
+  width: 300px;
+  background-color: #fff;
+}
+
+.list.expandable.expanded {
+  max-height: none;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  font-size: 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.65);
+  background-color: #fafafa;
+}
+
+.expandButton {
+  height: 28px;
+  font-size: 14px;
+  border: none;
+  padding: 0 4px;
+  color: #1890ff;
+  background-color: transparent;
+  cursor: pointer;
+}
