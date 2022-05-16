@@ -8,7 +8,7 @@ type RenderTruncator = ({
   hiddenItemsCount: number;
 }) => React.ReactNode;
 
-export interface TruncatedListProps {
+export type TruncatedListProps = {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
@@ -16,7 +16,7 @@ export interface TruncatedListProps {
   itemClassName?: string;
   truncatorClassName?: string;
   style?: React.CSSProperties;
-}
+};
 
 const TruncatedList = ({
   renderTruncator,
