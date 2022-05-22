@@ -33,7 +33,9 @@ const TruncatedList = ({
 
   useLayoutEffect(() => {
     const truncate = () => {
-      if (!containerRef.current) return;
+      if (!containerRef.current) {
+        return;
+      }
 
       containerRef.current.style.overflow = "hidden";
 

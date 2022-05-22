@@ -45,11 +45,11 @@ body {
 }
 
 .list.resizable {
-  width: 300px;
+  width: 50px;
+  height: 40px;
+  max-height: none;
   resize: both;
   background-color: #fff;
-  height: 74px;
-  max-height: none;
 }
 
 .list.expandable {
