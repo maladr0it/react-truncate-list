@@ -50,7 +50,7 @@ const TruncatedList = ({
       }
 
       let i: number; // Declare outside the loop so we can check it afterward
-      for (i = 0; i < childNodes.length; i += 2) {
+      for (i = 1; i < childNodes.length; i += 2) {
         const itemEl = childNodes[i];
         const truncatorEl = childNodes[i + 1];
 
@@ -70,7 +70,7 @@ const TruncatedList = ({
           truncatorRect.right > containerRect.right
         ) {
           itemEl.hidden = true;
-          if (i > 0) {
+          if (i >= 1) {
             childNodes[i - 1].hidden = false;
           }
           break;
@@ -107,16 +107,18 @@ const TruncatedList = ({
 
   const childArray = React.Children.toArray(children);
 
-  const items = childArray.map((item, i) => {
-    return (
-      <React.Fragment key={i}>
-        <li className={itemClassName}>{item}</li>
-        <li className={truncatorClassName} hidden>
-          {renderTruncator({ hiddenItemsCount: childArray.length - 1 - i })}
-        </li>
-      </React.Fragment>
-    );
-  });
+  const getTruncator = (i: number) => (
+    <li className={truncatorClassName} hidden>
+      {renderTruncator({ hiddenItemsCount: i })}
+    </li>
+  );
+
+  const items = childArray.map((item, i) => (
+    <React.Fragment key={i}>
+      <li className={itemClassName}>{item}</li>
+      {getTruncator(childArray.length - 1 - i)}
+    </React.Fragment>
+  ));
 
   return (
     <ul
@@ -124,6 +126,7 @@ const TruncatedList = ({
       className={`react-truncate-list ${className || ""}`}
       style={style}
     >
+      {getTruncator(childArray.length)}
       {items}
     </ul>
   );
