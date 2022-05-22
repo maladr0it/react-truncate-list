@@ -40,20 +40,6 @@ export const App = () => {
         </TruncatedList>
       </div>
 
-      <h1>Always show first</h1>
-      <div className="demo">
-        <TruncatedList
-          className="list resizable"
-          renderTruncator={({ hiddenItemsCount }) => (
-            <div className="listItem">+{hiddenItemsCount}</div>
-          )}
-        >
-          {ITEMS.map((item) => (
-            <div className="listItem">{item}</div>
-          ))}
-        </TruncatedList>
-      </div>
-
       <h1>Interactive truncator</h1>
       <div className="demo">
         <TruncatedList
