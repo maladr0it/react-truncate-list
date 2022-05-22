@@ -70,6 +70,7 @@ interface Props {
   alwaysShowTruncator?: boolean;
   className?: string;
   itemClassName?: string;
+  truncatorClassName?: string;
   style?: React.CSSProperties;
 }
 ```
@@ -95,6 +96,10 @@ Always show the 'truncator', even when all items are visible. Useful for advance
 ### `itemClassName` (optional)
 
 Class name to apply to the generated `<li>` tags wrapping each child of the list. Typically you will not need this and will instead apply a class name directly to the children.
+
+### `truncatorClassName` (optional)
+
+Class name to apply to the generated `<li>` tag wrapping the truncator. Typically you will not need this and will instead apply a class name using the `renderTruncator` prop.
 
 ## SSR
 
