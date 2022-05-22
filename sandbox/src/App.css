@@ -20,22 +20,9 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
 }
 
-.card.mobile {
-  max-width: 350px;
-}
-
-.card.desktop {
-  width: fit-content;
-}
-
-.card h3 {
-  margin: 8px 4px;
-}
-
 .list {
   display: flex;
   flex-wrap: wrap;
-  max-height: 74px;
   align-content: flex-start;
   align-items: center;
 }
@@ -45,15 +32,16 @@ body {
 }
 
 .list.resizable {
-  width: 300px;
+  width: 10px;
+  height: 36px;
+  max-height: none;
   resize: both;
   background-color: #fff;
-  height: 74px;
-  max-height: none;
 }
 
 .list.expandable {
   width: 300px;
+  max-height: 72px;
   background-color: #fff;
 }
 
