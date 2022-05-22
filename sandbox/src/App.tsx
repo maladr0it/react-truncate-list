@@ -44,7 +44,6 @@ export const App = () => {
       <div className="demo">
         <TruncatedList
           className="list resizable"
-          alwaysShowFirst
           renderTruncator={({ hiddenItemsCount }) => (
             <div className="listItem">+{hiddenItemsCount}</div>
           )}
