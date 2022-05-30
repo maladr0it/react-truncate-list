@@ -1,19 +1,12 @@
 .react-truncate-list {
   box-sizing: border-box;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
   list-style: none;
   overflow: auto;
 }
 
-.react-truncate-list * {
+.react-truncate-list *, .react-truncate-list *::before,  .react-truncate-list *::after {
   box-sizing: inherit;
 }
 
-.react-truncate-list *::before {
-  box-sizing: inherit;
-}
-
-.react-truncate-list *::after {
-  box-sizing: inherit;
-}

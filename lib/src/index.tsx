@@ -2,20 +2,23 @@ import React, { useRef, useLayoutEffect } from "react";
 
 import "./styles.css";
 
-type RenderTruncator = ({
-  hiddenItemsCount,
-}: {
-  hiddenItemsCount: number;
-}) => React.ReactNode;
+type RenderTruncator = ({ hiddenItemsCount }: { hiddenItemsCount: number }) => React.ReactNode;
 
 export type TruncatedListProps = {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
   className?: string;
-  itemClassName?: string;
-  truncatorClassName?: string;
   style?: React.CSSProperties;
+};
+
+const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
+  return (
+    child.top >= parent.top &&
+    child.bottom <= parent.bottom &&
+    child.left >= parent.left &&
+    child.right <= parent.right
+  );
 };
 
 const TruncatedList = ({
@@ -23,8 +26,6 @@ const TruncatedList = ({
   alwaysShowTruncator,
   children,
   className,
-  itemClassName,
-  truncatorClassName,
   style,
 }: TruncatedListProps) => {
   const containerRef = useRef<HTMLUListElement>(null);
@@ -36,94 +37,104 @@ const TruncatedList = ({
       }
 
       containerRef.current.style.overflow = "hidden";
+      const childNodes = Array.from(containerRef.current.children) as HTMLElement[];
 
-      const childNodes = Array.from(
-        containerRef.current.children,
-      ) as HTMLElement[];
-
-      for (let node of childNodes) {
-        node.hidden = true;
+      // Show all items, hide all truncators.
+      for (let i = 0; i < childNodes.length; ++i) {
+        childNodes[i].hidden = i % 2 === 0;
       }
 
-      if (childNodes.length === 0) {
+      // If there are no items (the last truncator is always included).
+      if (childNodes.length === 1) {
         return;
       }
 
-      let i: number; // Declare outside the loop so we can check it afterward
-      for (i = 1; i < childNodes.length; i += 2) {
-        const itemEl = childNodes[i];
-        const truncatorEl = childNodes[i + 1];
-
-        itemEl.hidden = false;
+      //
+      // Test if truncation is necessary.
+      //
+      if (alwaysShowTruncator) {
+        // if the last truncator fits, exit
+        const truncatorEl = childNodes[childNodes.length - 1];
         truncatorEl.hidden = false;
-        const truncatorRect = truncatorEl.getBoundingClientRect();
-        const containerRect = containerRef.current.getBoundingClientRect();
-        truncatorEl.hidden = true;
 
-        // If truncator is outside of the container
         if (
-          truncatorRect.bottom > containerRect.bottom ||
-          truncatorRect.right > containerRect.right
+          rectContainsRect(
+            containerRef.current.getBoundingClientRect(),
+            truncatorEl.getBoundingClientRect(),
+          )
         ) {
-          itemEl.hidden = true;
-          if (i >= 1) {
-            childNodes[i - 1].hidden = false;
-          }
-          break;
+          return;
+        }
+        truncatorEl.hidden = true;
+      } else {
+        // if the last item fits, exit
+        const itemEl = childNodes[childNodes.length - 2];
+
+        if (
+          rectContainsRect(
+            containerRef.current.getBoundingClientRect(),
+            itemEl.getBoundingClientRect(),
+          )
+        ) {
+          return;
         }
       }
 
-      // If all items were inside the container but we still wish to show the truncator
-      if (i === childNodes.length && alwaysShowTruncator) {
-        childNodes[childNodes.length - 1].hidden = false;
+      //
+      // Go backward and find the last truncator that can fit.
+      //
+      for (let i = childNodes.length - 2; i >= 1; i -= 2) {
+        const itemEl = childNodes[i];
+        const truncatorEl = childNodes[i - 1];
+        itemEl.hidden = true;
+        truncatorEl.hidden = false;
+
+        if (
+          rectContainsRect(
+            containerRef.current.getBoundingClientRect(),
+            truncatorEl.getBoundingClientRect(),
+          )
+        ) {
+          return;
+        }
+
+        truncatorEl.hidden = true;
       }
     };
 
     truncate();
 
-    const resizeObserver = new ResizeObserver((entries: any) => {
+    const resizeObserver = new ResizeObserver((entries) => {
       for (let _ of entries) {
         truncate();
       }
     });
 
-    // Copy to a variable so the ref in the cleanup effect targets the correct node
-    const containerEl = containerRef.current;
-
-    if (containerEl) {
-      resizeObserver.observe(containerEl);
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
     }
 
     return () => {
-      if (containerEl) {
-        resizeObserver.unobserve(containerEl);
+      if (containerRef.current) {
+        resizeObserver.unobserve(containerRef.current);
       }
     };
   }, [children, alwaysShowTruncator, className, style]);
 
   const childArray = React.Children.toArray(children);
 
-  const getTruncator = (i: number) => (
-    <li className={truncatorClassName} hidden>
-      {renderTruncator({ hiddenItemsCount: i })}
-    </li>
-  );
-
   const items = childArray.map((item, i) => (
     <React.Fragment key={i}>
-      <li className={itemClassName}>{item}</li>
-      {getTruncator(childArray.length - 1 - i)}
+      <li hidden>{renderTruncator({ hiddenItemsCount: childArray.length - i })}</li>
+      <li>{item}</li>
     </React.Fragment>
   ));
 
   return (
-    <ul
-      ref={containerRef}
-      className={`react-truncate-list ${className || ""}`}
-      style={style}
-    >
-      {getTruncator(childArray.length)}
+    <ul ref={containerRef} className={`react-truncate-list ${className || ""}`} style={style}>
       {items}
+
+      <li hidden>{renderTruncator({ hiddenItemsCount: 0 })}</li>
     </ul>
   );
 };
