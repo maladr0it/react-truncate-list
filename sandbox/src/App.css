@@ -32,8 +32,8 @@ body {
 }
 
 .list.resizable {
-  width: 10px;
-  height: 36px;
+  width: 50px;
+  height: 20px;
   max-height: none;
   resize: both;
   background-color: #fff;
@@ -41,7 +41,7 @@ body {
 
 .list.expandable {
   width: 300px;
-  max-height: 72px;
+  max-height: 36px;
   background-color: #fff;
 }
 
@@ -52,6 +52,7 @@ body {
 .listItem {
   display: flex;
   align-items: center;
+  white-space: nowrap;
   height: 28px;
   padding: 0 12px;
   font-size: 14px;

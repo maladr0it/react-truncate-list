@@ -58,19 +58,13 @@ Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) f
 ### Props
 
 ```ts
-type RenderTruncator = ({
-  hiddenItemsCount,
-}: {
-  hiddenItemsCount: number;
-}) => React.ReactNode;
+type RenderTruncator = ({ hiddenItemsCount }: { hiddenItemsCount: number }) => React.ReactNode;
 
 interface Props {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
   className?: string;
-  itemClassName?: string;
-  truncatorClassName?: string;
   style?: React.CSSProperties;
 }
 ```
@@ -92,14 +86,6 @@ Pass the list items as children. Each child will be automatically wrapped in an 
 ### `alwaysShowTruncator` (optional)
 
 Always show the 'truncator', even when all items are visible. Useful for advanced use-cases such as an expanding list.
-
-### `itemClassName` (optional)
-
-Class name to apply to the generated `<li>` tags wrapping each child of the list. Typically you will not need this and will instead apply a class name directly to the children.
-
-### `truncatorClassName` (optional)
-
-Class name to apply to the generated `<li>` tag wrapping the truncator. Typically you will not need this and will instead apply a class name using the `renderTruncator` prop.
 
 ## SSR
 
