@@ -43,7 +43,7 @@ yarn add resize-observer-polyfill
 3. Import the package and its required CSS and use it 🚀
 
 ```js
-import TruncatedList from "react-truncate-list";
+import { TruncatedList } from "react-truncate-list";
 import "react-truncate-list/dist/styles.css";
 ```
 
@@ -60,13 +60,13 @@ Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) f
 ```ts
 type RenderTruncator = ({ hiddenItemsCount }: { hiddenItemsCount: number }) => React.ReactNode;
 
-interface Props {
+type Props = {
   renderTruncator: RenderTruncator;
   children?: React.ReactNode;
   alwaysShowTruncator?: boolean;
   className?: string;
   style?: React.CSSProperties;
-}
+};
 ```
 
 ### `renderTruncator`

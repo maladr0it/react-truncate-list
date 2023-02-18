@@ -14,14 +14,11 @@ export type TruncatedListProps = {
 
 const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
   return (
-    child.top >= parent.top &&
-    child.bottom <= parent.bottom &&
-    child.left >= parent.left &&
-    child.right <= parent.right
+    child.top >= parent.top && child.bottom <= parent.bottom && child.left >= parent.left && child.right <= parent.right
   );
 };
 
-const TruncatedList = ({
+export const TruncatedList = ({
   renderTruncator,
   alwaysShowTruncator,
   children,
@@ -57,12 +54,7 @@ const TruncatedList = ({
         const truncatorEl = childNodes[childNodes.length - 1];
         truncatorEl.hidden = false;
 
-        if (
-          rectContainsRect(
-            containerRef.current.getBoundingClientRect(),
-            truncatorEl.getBoundingClientRect(),
-          )
-        ) {
+        if (rectContainsRect(containerRef.current.getBoundingClientRect(), truncatorEl.getBoundingClientRect())) {
           return;
         }
         truncatorEl.hidden = true;
@@ -70,12 +62,7 @@ const TruncatedList = ({
         // if the last item fits, exit
         const itemEl = childNodes[childNodes.length - 2];
 
-        if (
-          rectContainsRect(
-            containerRef.current.getBoundingClientRect(),
-            itemEl.getBoundingClientRect(),
-          )
-        ) {
+        if (rectContainsRect(containerRef.current.getBoundingClientRect(), itemEl.getBoundingClientRect())) {
           return;
         }
       }
@@ -89,12 +76,7 @@ const TruncatedList = ({
         itemEl.hidden = true;
         truncatorEl.hidden = false;
 
-        if (
-          rectContainsRect(
-            containerRef.current.getBoundingClientRect(),
-            truncatorEl.getBoundingClientRect(),
-          )
-        ) {
+        if (rectContainsRect(containerRef.current.getBoundingClientRect(), truncatorEl.getBoundingClientRect())) {
           return;
         }
 
@@ -138,5 +120,3 @@ const TruncatedList = ({
     </ul>
   );
 };
-
-export default TruncatedList;
