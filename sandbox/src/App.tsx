@@ -61,13 +61,12 @@ export const App = () => {
                   {hiddenItemsCount} more...
                 </button>
               );
-            } else {
-              return (
-                <button className="expandButton" onClick={collapse}>
-                  hide
-                </button>
-              );
             }
+            return (
+              <button className="expandButton" onClick={collapse}>
+                hide
+              </button>
+            );
           }}
         >
           {items.map((item) => (
