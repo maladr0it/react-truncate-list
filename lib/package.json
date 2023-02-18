@@ -1,6 +1,6 @@
 {
   "name": "react-truncate-list",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "Truncate a list of elements with a symbol or component of your choice",
   "repository": "https://github.com/maladr0it/react-truncate-list",
   "main": "dist/index.js",
@@ -18,13 +18,14 @@
   "license": "ISC",
   "files": [
     "dist/",
-    "package.json"
+    "package.json",
+    "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@types/react": "^18.0.9",
-    "typescript": "^4.7.2"
+    "@types/react": "^18.0.28",
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
-    "react": ">=16.x.x"
+    "react": ">=16.8.x"
   }
 }
