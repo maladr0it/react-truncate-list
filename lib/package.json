@@ -1,21 +1,23 @@
 {
   "name": "react-truncate-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Truncate a list of elements with a symbol or component of your choice",
   "repository": "https://github.com/maladr0it/react-truncate-list",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc && cp src/styles.css dist/styles.css"
-  },
+  "author": "bradford.lachlan@gmail.com",
   "keywords": [
     "truncate",
     "truncate list",
     "ellipsis",
     "react"
   ],
-  "author": "bradford.lachlan@gmail.com",
   "license": "ISC",
+  "scripts": {
+    "clean" : "rm -rf dist",
+    "build": "npm run clean && tsc && tsc -p tsconfig.cjs.json && cp src/styles.css dist/styles.css"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/",
     "package.json",

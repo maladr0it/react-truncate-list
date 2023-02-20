@@ -3,13 +3,10 @@
     "baseUrl": "src",
     "lib": ["DOM", "ES2022"],
     "jsx": "react",
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "target": "ES2015",
+    "module": "CommonJS",
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist/esm",
-    "declaration": true,
-    "declarationDir": "dist"
+    "outDir": "dist/cjs",
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

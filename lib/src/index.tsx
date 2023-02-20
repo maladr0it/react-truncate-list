@@ -1,7 +1,5 @@
 import React, { useRef, useLayoutEffect } from "react";
 
-import "./styles.css";
-
 type RenderTruncator = ({ hiddenItemsCount }: { hiddenItemsCount: number }) => React.ReactNode;
 
 export type TruncatedListProps = {
