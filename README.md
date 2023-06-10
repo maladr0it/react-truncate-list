@@ -23,21 +23,13 @@ This is surprisingly hard to accomplish, as there is no way to know ahead of tim
 1. Add the `react-truncate-list` package
 
 ```bash
-# npm
 npm i react-truncate-list
-
-# yarn
-yarn add react-truncate-list
 ```
 
-2. If your project does not already include it, add the `resize-observer-polyfill` package
+2. If your project targets older browsers, add the `resize-observer-polyfill` package to support the `ResizeObserver` API (https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver).
 
 ```bash
-# npm
 npm i resize-observer-polyfill
-
-# yarn
-yarn add resize-observer-polyfill
 ```
 
 3. Import the package and its required CSS and use it 🚀
@@ -90,3 +82,13 @@ Always show the 'truncator', even when all items are visible. Useful for advance
 ## SSR
 
 Before hydration, the list will have `overflow: auto` applied to it so that it is scrollable. Once hydrated in the client, a layout effect will fire, shortening the list and inserting the 'truncator'.
+
+## Contributing
+
+### Local development environment
+
+1. From the `lib` directory, run `npm link`.
+2. From the `lib` directory, run `npm run dev` to build the library in watch mode.
+3. From the `sandbox` directory, run `npm link react-truncate list`. This will symlink the local `react-truncate-list` package into the sandbox, so local changes to the library will be immediately reflected in the sandbox.
+4. From the `sandbox` directory, run `npm run dev` to start the sandbox in watch mode.
+5. Load the sandbox in your browser on the port specified in the terminal.

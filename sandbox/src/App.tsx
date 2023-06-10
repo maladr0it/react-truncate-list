@@ -6,18 +6,20 @@ import "./App.css";
 
 const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "fred", "plugh", "xyzzy", "thud"];
 
+const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
+
 export const App = () => {
   const [expanded, setExpanded] = useState(false);
-  const [items, setItems] = useState(ITEMS);
+  const [items, setItems] = useState(INITIAL_ITEMS);
   const expand = () => setExpanded(true);
   const collapse = () => setExpanded(false);
 
   const addItem = () => {
-    setItems((prev) => ITEMS.slice(0, prev.length + 1));
+    setItems((prev) => [...prev, ITEMS[prev.length % ITEMS.length]]);
   };
 
   const removeItem = () => {
-    setItems((prev) => ITEMS.slice(0, prev.length - 1));
+    setItems((prev) => prev.slice(0, Math.max(0, prev.length - 1)));
   };
 
   return (
@@ -31,8 +33,10 @@ export const App = () => {
           className="list resizable"
           renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount} more</div>}
         >
-          {items.map((item) => (
-            <div className="listItem">{item}</div>
+          {items.map((item, i) => (
+            <div key={i} className="listItem">
+              {item}
+            </div>
           ))}
         </TruncatedList>
       </div>
@@ -43,8 +47,10 @@ export const App = () => {
           className="list resizable"
           renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount} more</div>}
         >
-          {items.map((item) => (
-            <div className="listItem">{item}</div>
+          {items.map((item, i) => (
+            <div key={i} className="listItem">
+              {item}
+            </div>
           ))}
         </TruncatedList>
       </div>
@@ -69,8 +75,10 @@ export const App = () => {
             );
           }}
         >
-          {items.map((item) => (
-            <div className="listItem">{item}</div>
+          {items.map((item, i) => (
+            <div key={i} className="listItem">
+              {item}
+            </div>
           ))}
         </TruncatedList>
       </div>

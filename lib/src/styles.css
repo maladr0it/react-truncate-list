@@ -6,7 +6,8 @@
   overflow: auto;
 }
 
-.react-truncate-list *, .react-truncate-list *::before,  .react-truncate-list *::after {
+.react-truncate-list *,
+.react-truncate-list *::before,
+.react-truncate-list *::after {
   box-sizing: inherit;
 }
-
