@@ -50,7 +50,7 @@ Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) f
 ### Props
 
 ```ts
-type RenderTruncator = ({ hiddenItemsCount }: { hiddenItemsCount: number }) => React.ReactNode;
+type RenderTruncator = (state: { hiddenItemsCount: number }) => React.ReactNode;
 
 type Props = {
   renderTruncator: RenderTruncator;
@@ -87,8 +87,14 @@ Before hydration, the list will have `overflow: auto` applied to it so that it i
 
 ### Local development environment
 
-1. From the `lib` directory, run `npm link`.
-2. From the `lib` directory, run `npm run dev` to build the library in watch mode.
-3. From the `sandbox` directory, run `npm link react-truncate list`. This will symlink the local `react-truncate-list` package into the sandbox, so local changes to the library will be immediately reflected in the sandbox.
-4. From the `sandbox` directory, run `npm run dev` to start the sandbox in watch mode.
-5. Load the sandbox in your browser on the port specified in the terminal.
+1. To build the library in watch mode
+
+```bash
+npm run dev --workspace react-truncate-list
+```
+
+2. To start the testing sandbox
+
+```bash
+npm run dev --workspace sandbox
+```

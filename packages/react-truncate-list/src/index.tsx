@@ -9,7 +9,6 @@ export type TruncatedListProps = {
   alwaysShowTruncator?: boolean;
   className?: string;
   style?: React.CSSProperties;
-  onUpdate?: (truncateFn: () => void) => void;
 };
 
 const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
@@ -21,7 +20,6 @@ const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
 export const TruncatedList = ({
   renderTruncator,
   alwaysShowTruncator,
-  onUpdate,
   children,
   className,
   style,
@@ -34,18 +32,20 @@ export const TruncatedList = ({
     }
     const childNodes = Array.from(containerRef.current.children) as HTMLElement[];
 
-    // If there are no items (the last truncator is always included).
-    if (childNodes.length === 1) {
-      return;
-    }
-
-    // Put the list in its initial state. Show all items, hide all truncators.
+    //
+    // Put the list in its initial state.
+    //
+    // Change from a scrollable container to overflow: hidden during hydration
+    containerRef.current.style.overflow = "hidden";
+    // Show all items, hide all truncators.
     for (let i = 0; i < childNodes.length; ++i) {
       childNodes[i].hidden = i % 2 === 0;
     }
 
-    // Change from a scrollable container to overflow: hidden during hydration
-    containerRef.current.style.overflow = "hidden";
+    // If there are no items (the last truncator is always included).
+    if (childNodes.length === 1) {
+      return;
+    }
 
     //
     // Test if truncation is necessary.
@@ -120,14 +120,11 @@ export const TruncatedList = ({
     truncatorEl.hidden = false;
   }, [children, alwaysShowTruncator]);
 
+  // Set up a resize observer
   useLayoutEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (let _ of entries) {
-        if (onUpdate) {
-          onUpdate(truncate);
-        } else {
-          truncate();
-        }
+        truncate();
       }
     });
 

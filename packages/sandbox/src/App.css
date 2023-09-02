@@ -30,8 +30,7 @@ body {
 }
 
 .list.resizable {
-  /* width: 300px; */
-  width: 800px;
+  width: 300px;
   height: 72px;
   max-height: none;
   resize: both;

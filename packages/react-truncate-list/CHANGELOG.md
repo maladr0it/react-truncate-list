@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 - 2023-09-01
+
+### Misc.
+
+- Significant performance improvements for large lists
+
 ## 1.0.1 - 2023-02-20
 
 ### Features
