@@ -21,19 +21,18 @@ body {
 }
 
 .list {
+  padding: 4px;
   display: flex;
   flex-wrap: wrap;
+  gap: 8px;
   align-content: flex-start;
   align-items: center;
 }
 
-.list > * {
-  margin: 4px;
-}
-
 .list.resizable {
-  width: 50px;
-  height: 20px;
+  /* width: 300px; */
+  width: 800px;
+  height: 72px;
   max-height: none;
   resize: both;
   background-color: #fff;

@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "strict": true,
     "lib": ["DOM", "ES2022"],
     "jsx": "react",
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist/esm",
+    "outDir": "./dist/esm",
     "declaration": true,
-    "declarationDir": "dist"
+    "declarationDir": "./dist",
+    "sourceMap": true,
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*"],
   "exclude": ["node_modules"]
 }

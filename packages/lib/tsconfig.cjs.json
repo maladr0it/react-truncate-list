@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "lib": ["DOM", "ES2022"],
     "jsx": "react",
     "target": "ES2015",
     "module": "CommonJS",
     "allowSyntheticDefaultImports": true,
-    "outDir": "dist/cjs"
+    "outDir": "./dist/cjs"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules"]
 }

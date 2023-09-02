@@ -12,7 +12,7 @@
   ],
   "license": "ISC",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "",
     "build": "npm run clean && tsc && tsc -p tsconfig.cjs.json && cp src/styles.css dist/styles.css",
     "build:dev": "npm run clean && tsc && cp src/styles.css dist/styles.css",
     "dev": "node ./scripts/watch.mjs src 'npm run build:dev'"
@@ -22,6 +22,7 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist/",
+    "src/",
     "package.json",
     "CHANGELOG.md"
   ],
