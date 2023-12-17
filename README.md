@@ -8,7 +8,7 @@ Truncate a list of elements with a symbol or component of your choice.
 
 ## Demo
 
-A [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) is worth a thousand words.
+A [demo](https://codesandbox.io/p/devbox/react-truncate-list-demo-okc5e) is worth a thousand words.
 
 ## Purpose
 
