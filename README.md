@@ -8,7 +8,7 @@ Truncate a list of elements with a symbol or component of your choice.
 
 ## Demo
 
-A [demo](https://codesandbox.io/p/devbox/react-truncate-list-demo-okc5e) is worth a thousand words.
+A [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx) is worth a thousand words.
 
 ## Purpose
 
@@ -43,7 +43,7 @@ import "react-truncate-list/dist/styles.css";
 
 This library simply provides an unstyled `<ul>` that will render a component of your choice after the last item that fits within it before overflowing. It is up to you to provide a `max-height` or some other constraint on its dimensions so that it will experience overflow behaviour.
 
-Please see the [demo](https://codesandbox.io/s/react-truncate-list-demo-okc5e) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will empower you to customise the list to look and behave exactly as you need.
+Please see the [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will empower you to customise the list to look and behave exactly as you need.
 
 ## API
 
