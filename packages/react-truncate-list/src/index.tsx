@@ -1,14 +1,15 @@
-import React, { useRef, useLayoutEffect } from "react";
-import { useCallback } from "react";
+import { useCallback, useRef, useLayoutEffect, Children, Fragment, type ReactNode, type CSSProperties } from "react";
 
-type RenderTruncator = (state: { hiddenItemsCount: number }) => React.ReactNode;
+console.log("wow");
+
+type RenderTruncator = (state: { hiddenItemsCount: number }) => ReactNode;
 
 export type TruncatedListProps = {
   renderTruncator: RenderTruncator;
-  children?: React.ReactNode;
+  children?: ReactNode;
   alwaysShowTruncator?: boolean;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 };
 
 const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
@@ -139,13 +140,13 @@ export const TruncatedList = ({
     };
   }, [truncate]);
 
-  const childArray = React.Children.toArray(children);
+  const childArray = Children.toArray(children);
 
   const items = childArray.map((item, i) => (
-    <React.Fragment key={i}>
+    <Fragment key={i}>
       <li hidden>{renderTruncator({ hiddenItemsCount: childArray.length - i })}</li>
       <li>{item}</li>
-    </React.Fragment>
+    </Fragment>
   ));
 
   return (

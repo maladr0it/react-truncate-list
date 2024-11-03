@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "lib": ["DOM", "ES2022"],
-    "jsx": "react",
+    "jsx": "react-jsx",
     "target": "ES2015",
     "module": "CommonJS",
-    "allowSyntheticDefaultImports": true,
     "outDir": "./dist/cjs"
   },
   "include": ["./src/**/*"],

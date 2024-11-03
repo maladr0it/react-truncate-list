@@ -9,7 +9,12 @@
       "request": "launch",
       "name": "Launch Chrome against localhost",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}"
+      // this lets us set breakpoints in library, but not the sandbox
+      "webRoot": "${workspaceFolder}",
+
+      // this lets us set breakpoints in sandbox, but not the library
+      // "webRoot": "${workspaceFolder}/packages/sandbox",
+      "sourceMaps": true
     }
   ]
 }

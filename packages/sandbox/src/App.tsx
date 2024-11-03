@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { TruncatedList } from "react-truncate-list";
-import "react-truncate-list/dist/styles.css";
+// import "react-truncate-list/dist/styles.css";
 
 import "./App.css";
 
 const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "fred", "plugh", "xyzzy", "thud"];
 
-const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
+const INITIAL_ITEMS = Array.from({ length: 1 }, () => ITEMS).flat(1);
 
 export const App = () => {
   const [items, setItems] = useState(INITIAL_ITEMS);
@@ -47,7 +47,7 @@ export const App = () => {
         </TruncatedList>
       </div>
 
-      <h1>RTL</h1>
+      {/* <h1>RTL</h1>
       <div className="demo" dir="rtl">
         <TruncatedList
           className="list resizable"
@@ -87,7 +87,7 @@ export const App = () => {
             </div>
           ))}
         </TruncatedList>
-      </div>
+      </div> */}
     </div>
   );
 };

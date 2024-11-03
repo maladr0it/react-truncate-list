@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "strict": true,
-    "lib": ["DOM", "ES2022"],
-    "jsx": "react",
-    "target": "ES2022",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "Bundler",
     "outDir": "./dist/esm",
     "declaration": true,
     "declarationDir": "./dist",
