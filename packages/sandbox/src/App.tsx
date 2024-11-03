@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TruncatedList } from "react-truncate-list";
-// import "react-truncate-list/dist/styles.css";
+import "react-truncate-list/styles.css";
 
 import "./App.css";
 

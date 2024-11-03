@@ -14,7 +14,7 @@
 
       // this lets us set breakpoints in sandbox, but not the library
       // "webRoot": "${workspaceFolder}/packages/sandbox",
-      "sourceMaps": true
+      "sourceMaps": true,
     }
   ]
 }

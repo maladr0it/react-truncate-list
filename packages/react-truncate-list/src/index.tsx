@@ -1,7 +1,5 @@
 import { useCallback, useRef, useLayoutEffect, Children, Fragment, type ReactNode, type CSSProperties } from "react";
 
-console.log("wow");
-
 type RenderTruncator = (state: { hiddenItemsCount: number }) => ReactNode;
 
 export type TruncatedListProps = {
@@ -25,6 +23,8 @@ export const TruncatedList = ({
   className,
   style,
 }: TruncatedListProps) => {
+  console.log("rendering list");
+
   const containerRef = useRef<HTMLUListElement>(null);
 
   const truncate = useCallback(() => {
