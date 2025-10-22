@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4 - 2025-10-22
+
+### Features
+
+- Add onResize prop
+
 ## 1.0.3 - 2023-09-03
 
 ### Fixes
