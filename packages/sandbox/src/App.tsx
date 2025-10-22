@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TruncatedList } from "react-truncate-list";
 import "react-truncate-list/dist/styles.css";
+import { useDebouncedCallback } from "use-debounce";
 
 import "./App.css";
 
 const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "fred", "plugh", "xyzzy", "thud"];
 
 const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
+
+const DEBOUNCE_MS = 100;
 
 export const App = () => {
   const [items, setItems] = useState(INITIAL_ITEMS);
@@ -27,6 +30,21 @@ export const App = () => {
   const removeItem = () => {
     setItems((prev) => prev.slice(0, Math.max(0, prev.length - 1)));
   };
+
+  // const debouncedInvoke = useDebouncedCallback(
+  //   (fn: () => void) => {
+  //     fn();
+  //   },
+  //   DEBOUNCE_MS,
+  //   { leading: false, trailing: true },
+  // );
+
+  // useEffect(() => {
+  //   return () => {
+  //     // cancel any pending debounced calls on unmount
+  //     debouncedInvoke.cancel();
+  //   };
+  // }, [debouncedInvoke]);
 
   return (
     <div>
@@ -80,6 +98,26 @@ export const App = () => {
               </button>
             );
           }}
+        >
+          {items.map((item, i) => (
+            <div key={i} className="listItem">
+              {item}
+            </div>
+          ))}
+        </TruncatedList>
+      </div>
+
+      <h1>Debounced truncation</h1>
+
+      <div className="demo">
+        <TruncatedList
+          className="list resizable"
+          onResize={({ truncate }) => {
+            console.log("onResize");
+            // debouncedInvoke(truncate);
+            // truncate();
+          }}
+          renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount}</div>}
         >
           {items.map((item, i) => (
             <div key={i} className="listItem">

@@ -1,14 +1,17 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { useCallback } from "react";
 
-type RenderTruncator = (state: { hiddenItemsCount: number }) => React.ReactNode;
+type RenderTruncatorFn = (state: { hiddenItemsCount: number }) => React.ReactNode;
+
+type OnResizeFn = (bag: { truncate: () => void }) => void;
 
 export type TruncatedListProps = {
-  renderTruncator: RenderTruncator;
-  children?: React.ReactNode;
+  renderTruncator: RenderTruncatorFn;
   alwaysShowTruncator?: boolean;
+  onResize?: OnResizeFn;
   className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
 const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
@@ -20,9 +23,10 @@ const rectContainsRect = (parent: DOMRect, child: DOMRect) => {
 export const TruncatedList = ({
   renderTruncator,
   alwaysShowTruncator,
-  children,
+  onResize,
   className,
   style,
+  children,
 }: TruncatedListProps) => {
   const containerRef = useRef<HTMLUListElement>(null);
 
@@ -124,7 +128,11 @@ export const TruncatedList = ({
   useLayoutEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
       for (let _ of entries) {
-        truncate();
+        if (onResize) {
+          onResize({ truncate });
+        } else {
+          truncate();
+        }
       }
     });
 
