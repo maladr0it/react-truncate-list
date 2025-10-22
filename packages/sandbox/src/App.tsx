@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TruncatedList } from "react-truncate-list";
 import "react-truncate-list/dist/styles.css";
 import { useDebouncedCallback } from "use-debounce";
@@ -34,13 +34,6 @@ export const App = () => {
   const debouncedInvoke = useDebouncedCallback((fn: () => void) => {
     fn();
   }, DEBOUNCE_MS);
-
-  // cancel any pending debounced calls on unmount
-  useEffect(() => {
-    return () => {
-      debouncedInvoke.cancel();
-    };
-  }, [debouncedInvoke]);
 
   return (
     <div>
