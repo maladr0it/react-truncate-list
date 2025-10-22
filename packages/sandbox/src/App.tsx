@@ -9,7 +9,7 @@ const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "
 
 const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
 
-const DEBOUNCE_MS = 100;
+const DEBOUNCE_MS = 250;
 
 export const App = () => {
   const [items, setItems] = useState(INITIAL_ITEMS);
@@ -39,12 +39,12 @@ export const App = () => {
     { leading: false, trailing: true },
   );
 
-  // useEffect(() => {
-  //   return () => {
-  //     // cancel any pending debounced calls on unmount
-  //     debouncedInvoke.cancel();
-  //   };
-  // }, [debouncedInvoke]);
+  // cancel any pending debounced calls on unmount
+  useEffect(() => {
+    return () => {
+      debouncedInvoke.cancel();
+    };
+  }, [debouncedInvoke]);
 
   return (
     <div>
@@ -114,7 +114,7 @@ export const App = () => {
           className="list resizable"
           onResize={({ truncate }) => {
             console.log("onResize");
-            // debouncedInvoke(truncate);
+            debouncedInvoke(truncate);
             // truncate();
           }}
           renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount}</div>}

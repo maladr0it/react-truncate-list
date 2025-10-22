@@ -140,6 +140,8 @@ export const TruncatedList = ({
       resizeObserver.observe(containerRef.current);
     }
 
+    truncate();
+
     return () => {
       if (containerRef.current) {
         resizeObserver.unobserve(containerRef.current);
