@@ -31,13 +31,9 @@ export const App = () => {
     setItems((prev) => prev.slice(0, Math.max(0, prev.length - 1)));
   };
 
-  const debouncedInvoke = useDebouncedCallback(
-    (fn: () => void) => {
-      fn();
-    },
-    DEBOUNCE_MS,
-    { leading: false, trailing: true },
-  );
+  const debouncedInvoke = useDebouncedCallback((fn: () => void) => {
+    fn();
+  }, DEBOUNCE_MS);
 
   // cancel any pending debounced calls on unmount
   useEffect(() => {
@@ -113,9 +109,7 @@ export const App = () => {
         <TruncatedList
           className="list resizable"
           onResize={({ truncate }) => {
-            console.log("onResize");
             debouncedInvoke(truncate);
-            // truncate();
           }}
           renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount}</div>}
         >

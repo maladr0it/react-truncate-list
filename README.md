@@ -50,14 +50,17 @@ Please see the [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2F
 ### Props
 
 ```ts
-type RenderTruncator = (state: { hiddenItemsCount: number }) => React.ReactNode;
+type RenderTruncatorFn = (state: { hiddenItemsCount: number }) => React.ReactNode;
+
+type OnResizeFn = (bag: { truncate: () => void }) => void;
 
 type Props = {
-  renderTruncator: RenderTruncator;
-  children?: React.ReactNode;
+  renderTruncator: RenderTruncatorFn;
   alwaysShowTruncator?: boolean;
+  onResize?: OnResizeFn
   className?: string;
   style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 ```
 
@@ -65,7 +68,7 @@ type Props = {
 
 A render function called to display a 'truncator' after the last item before overflowing the container.
 
-```jsx
+```
 renderTruncator={({ hiddenItemsCount }) => (
   <span>{hiddenItemsCount} more items...</span>
 )}
@@ -78,6 +81,13 @@ Pass the list items as children. Each child will be automatically wrapped in an 
 ### `alwaysShowTruncator` (optional)
 
 Always show the 'truncator', even when all items are visible. Useful for advanced use-cases such as an expanding list.
+
+### `onResize` (optional)
+
+Pass a callback for when the list resizes. You can use this to debounce the truncating effect for performance reasons, If you use this, you must manually call the provided truncate() function in your callback.
+
+See the `Debounced truncation` example in the [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx).
+
 
 ## SSR
 
