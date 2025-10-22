@@ -31,13 +31,13 @@ export const App = () => {
     setItems((prev) => prev.slice(0, Math.max(0, prev.length - 1)));
   };
 
-  // const debouncedInvoke = useDebouncedCallback(
-  //   (fn: () => void) => {
-  //     fn();
-  //   },
-  //   DEBOUNCE_MS,
-  //   { leading: false, trailing: true },
-  // );
+  const debouncedInvoke = useDebouncedCallback(
+    (fn: () => void) => {
+      fn();
+    },
+    DEBOUNCE_MS,
+    { leading: false, trailing: true },
+  );
 
   // useEffect(() => {
   //   return () => {
