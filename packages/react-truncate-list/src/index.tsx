@@ -1,5 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
-import { useCallback } from "react";
+import React, { useRef, useLayoutEffect, useCallback } from "react";
 
 type RenderTruncatorFn = (state: { hiddenItemsCount: number }) => React.ReactNode;
 
