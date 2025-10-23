@@ -121,32 +121,32 @@ export const TruncatedList = ({
     }
     const truncatorEl = childNodes[truncatorIndex * 2];
     truncatorEl.hidden = false;
-  }, [children, alwaysShowTruncator]);
+  }, [alwaysShowTruncator]);
 
   // Set up a resize observer
   useLayoutEffect(() => {
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let _ of entries) {
-        if (onResize) {
-          onResize({ truncate });
-        } else {
-          truncate();
-        }
+    const resizeObserver = new ResizeObserver(() => {
+      if (onResize) {
+        onResize({ truncate });
+      } else {
+        truncate();
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    const containerEl = containerRef.current;
+
+    if (!containerEl) {
+      throw new Error("assert: container is mounted");
     }
+
+    resizeObserver.observe(containerEl);
 
     truncate();
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
-      }
+      resizeObserver.unobserve(containerEl);
     };
-  }, [truncate]);
+  }, [truncate, onResize]);
 
   const childArray = React.Children.toArray(children);
 
