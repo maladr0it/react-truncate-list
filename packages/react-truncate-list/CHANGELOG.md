@@ -1,10 +1,16 @@
 # Changelog
 
+## 1.0.5
+
+### Fixes
+
+- Fixed `onResize` prop not updating if changed by the user.
+
 ## 1.0.4 - 2025-10-22
 
 ### Features
 
-- Add onResize prop
+- Add onResize prop.
 
 ## 1.0.3 - 2023-09-03
 
@@ -22,7 +28,7 @@
 
 ### Features
 
-- Add CommonJS support
+- Add CommonJS support.
 
 ## 1.0.0 - 2023-02-17
 
