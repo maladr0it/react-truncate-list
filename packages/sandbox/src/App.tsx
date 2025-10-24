@@ -7,13 +7,14 @@ import "./App.css";
 
 const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "fred", "plugh", "xyzzy", "thud"];
 
-const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
+const INITIAL_ITEMS = Array.from({ length: 1 }, () => ITEMS).flat(1);
 
-const DEBOUNCE_MS = 250;
+const DEBOUNCE_TIMES = [100, 1000];
 
 export const App = () => {
   const [items, setItems] = useState(INITIAL_ITEMS);
   const [expanded, setExpanded] = useState(false);
+  const [debounceTime, setDebounceTime] = useState(DEBOUNCE_TIMES[0]);
 
   const expand = () => {
     setExpanded(true);
@@ -31,9 +32,9 @@ export const App = () => {
     setItems((prev) => prev.slice(0, Math.max(0, prev.length - 1)));
   };
 
-  const debouncedInvoke = useDebouncedCallback((fn: () => void) => {
-    fn();
-  }, DEBOUNCE_MS);
+  const handleResize = useDebouncedCallback((bag: { truncate: () => void }) => {
+    bag.truncate();
+  }, debounceTime);
 
   return (
     <div>
@@ -99,11 +100,24 @@ export const App = () => {
       <h1>Debounced truncation</h1>
 
       <div className="demo">
+        <fieldset>
+          <legend>Debounce time (ms)</legend>
+          {DEBOUNCE_TIMES.map((time) => (
+            <label key={time} className="radio-label">
+              <input
+                type="radio"
+                value="debounce"
+                checked={debounceTime === time}
+                onChange={() => setDebounceTime(time)}
+              />
+              {time}
+            </label>
+          ))}
+        </fieldset>
+
         <TruncatedList
           className="list resizable"
-          onResize={({ truncate }) => {
-            debouncedInvoke(truncate);
-          }}
+          onResize={handleResize}
           renderTruncator={({ hiddenItemsCount }) => <div className="listItem">+{hiddenItemsCount}</div>}
         >
           {items.map((item, i) => (

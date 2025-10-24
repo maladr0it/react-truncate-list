@@ -69,3 +69,7 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
+
+.radio-label {
+  display: block;
+}

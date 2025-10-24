@@ -146,7 +146,8 @@ export const TruncatedList = ({
     return () => {
       resizeObserver.unobserve(containerEl);
     };
-  }, [truncate, onResize]);
+    // trigger if children change also
+  }, [truncate, onResize, children]);
 
   const childArray = React.Children.toArray(children);
 
