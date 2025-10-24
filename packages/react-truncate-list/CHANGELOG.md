@@ -4,7 +4,7 @@
 
 ### Fixes
 
-- Fixed `onResize` prop not updating if changed by the user.
+- Fix `onResize` prop not updating if changed by the user.
 
 ## 1.0.4 - 2025-10-22
 
