@@ -7,7 +7,7 @@ import "./App.css";
 
 const ITEMS = ["foo", "bar", "baz", "qux", "quux", "corge", "grault", "waldo", "fred", "plugh", "xyzzy", "thud"];
 
-const INITIAL_ITEMS = Array.from({ length: 1 }, () => ITEMS).flat(1);
+const INITIAL_ITEMS = Array.from({ length: 10 }, () => ITEMS).flat(1);
 
 const DEBOUNCE_TIMES = [100, 1000];
 
