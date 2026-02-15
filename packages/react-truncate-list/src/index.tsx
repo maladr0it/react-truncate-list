@@ -11,6 +11,7 @@ export type TruncatedListProps = {
   className?: string;
   style?: React.CSSProperties;
   children?: React.ReactNode;
+
 };
 
 const rectContainsRect = (parent: DOMRect, child: DOMRect) => {

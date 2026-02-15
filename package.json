@@ -1,5 +1,8 @@
 {
   "workspaces": [
     "./packages/*"
-  ]
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=sandbox"
+  }
 }

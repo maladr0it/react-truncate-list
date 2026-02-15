@@ -18,7 +18,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "react-truncate-list": [
+        "../react-truncate-list/src/index.tsx"
+      ],
+      "react-truncate-list/*": [
+        "../react-truncate-list/src/*"
+      ]
+    }
   },
   "types": [
     "vite/client"

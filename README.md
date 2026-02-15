@@ -6,9 +6,16 @@ Truncate a list of elements with a symbol or component of your choice.
 - < 1kb bundle size
 - SSR friendly
 
-## Demo
+## Demos
 
-A [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx) is worth a thousand words.
+### 1. Interactive Sandbox
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/maladr0it/react-truncate-list)
+
+*Note: StackBlitz WebContainers may not work in Safari.*
+
+### 2. Static Preview
+[View Live Demo](https://maladr0it.github.io/react-truncate-list/)
+*Works in all browsers.*
 
 ## Purpose
 
@@ -97,14 +104,16 @@ Before hydration, the list will have `overflow: auto` applied to it so that it i
 
 ### Local development environment
 
-1. To build the library in watch mode
+1. Install dependencies
 
 ```bash
-npm run dev --workspace react-truncate-list
+npm install
 ```
 
-2. To start the testing sandbox
+2. Start the development server
 
 ```bash
-npm run dev --workspace sandbox
+npm run dev
 ```
+
+This will start the library sandbox. Changes to the library will be reflected instantly.
