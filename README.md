@@ -93,7 +93,7 @@ Always show the 'truncator', even when all items are visible. Useful for advance
 
 Pass a callback for when the list resizes. You can use this to debounce the truncating effect for performance reasons, If you use this, you must manually call the provided truncate() function in your callback.
 
-See the `Debounced truncation` example in the [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx).
+See the `Debounced truncation` example in the [demo](https://stackblitz.com/github/maladr0it/react-truncate-list?file=packages/sandbox/src/App.tsx).
 
 
 ## SSR
