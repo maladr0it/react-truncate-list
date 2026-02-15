@@ -50,7 +50,7 @@ import "react-truncate-list/dist/styles.css";
 
 This library simply provides an unstyled `<ul>` that will render a component of your choice after the last item that fits within it before overflowing. It is up to you to provide a `max-height` or some other constraint on its dimensions so that it will experience overflow behaviour.
 
-Please see the [demo](https://stackblitz.com/edit/vitejs-vite-lpmpeh?file=src%2FApp.tsx) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will empower you to customise the list to look and behave exactly as you need.
+Please see the [demo](https://stackblitz.com/github/maladr0it/react-truncate-list?file=packages/sandbox/src/App.tsx) for concrete examples for how the library can be used. As this is a low-level library, it takes a little more work than you may be used to. However this will empower you to customise the list to look and behave exactly as you need.
 
 ## API
 
